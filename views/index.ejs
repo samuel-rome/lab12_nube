@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TABLA DE PRODUCTOS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      text-align: center;
+      color: #ff0000;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0;
+      margin-bottom: 30px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #ff0000;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    img {
+      max-width: 100px;
+      max-height: 100px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      transition: box-shadow 0.3s ease;
+    }
+
+    img:hover {
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-right: 10px;
+      cursor: pointer;
+      color: #fff;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-warning {
+      background-color: #016814;
+    }
+
+    .btn-danger {
+      background-color: #ff0019;
+    }
+
+    .btn-add {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #002fff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-add:hover {
+      background-color: #218838;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>TABLA DE PRODUCTOS</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>DESCRIPCIÓN</th>
+        <th>PRECIO</th>
+        <th>IMAGEN</th>
+        <th>ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach((row) => { %>
+        <tr>
+          <td><%= row.id %></td>
+          <td><%= row.nombre %></td>
+          <td><%= row.descripcion %></td> 
+          <td><%= row.precio %></td>
+          <td><img src="<%= row.imagen %>" alt="<%= row.imagen %>"></td>
+          <td>
+            <div>
+              <a class="btn btn-warning" href="/up/<%= row.id %>">Editar</a>
+              <a class="btn btn-danger" href="/delete/<%= row.id %>">Eliminar</a>
+            </div>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <div class="text-right">
+    <a class="btn-add" href="/add">Agregar Nuevo Producto</a>
+  </div>
+</div>
+</body>
+</html>
